@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aan de slag — Athlete Intelligence</title>
+<meta name="description" content="De acht dingen die jouw handen nodig hebben. Per stap: wat je doet, waarom, hoe je weet dat het gelukt is, en wat je aan mij doorgeeft.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0a0e; --surface:#13131a; --surface-2:#1b1b24; --line:#26262f; --line-2:#33333f;
+    --text:#ececf1; --muted:#8b8b9a; --dim:#5c5c6b;
+    --fitness:#3d7bff; --fatigue:#ff4d3d; --form:#00d68f; --easy:#f0b429;
+    --radius:14px; --radius-sm:9px; --maxw:1120px;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --display:"Archivo","IBM Plex Sans",system-ui,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--void);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;background:radial-gradient(120% 80% at 50% -10%,transparent 40%,rgba(0,0,0,.55) 100%);mix-blend-mode:multiply}
+  h1,h2,h3,h4{font-family:var(--display);font-variation-settings:"wdth" 116;font-weight:800;line-height:1.03;letter-spacing:-.028em;margin:0;text-wrap:balance}
+  h1{font-size:clamp(2.4rem,6.6vw,4.6rem)}
+  h2{font-size:clamp(1.8rem,4vw,2.7rem)}
+  h3{font-size:clamp(1.15rem,2vw,1.5rem);font-variation-settings:"wdth" 108;font-weight:700}
+  h4{font-size:1rem;font-variation-settings:"wdth" 104;font-weight:700;letter-spacing:-.01em}
+  p{margin:0 0 1em}p:last-child{margin-bottom:0}
+  a{color:var(--fitness);text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}
+  strong{font-weight:600;color:#fff}
+  code,.mono{font-family:var(--mono);font-size:.86em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:.7em;margin-bottom:1.1em}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--line-2)}
+  .eyebrow.accent{color:var(--fitness)}.eyebrow.accent::before{background:var(--fitness)}
+  section.band{padding:clamp(64px,9vw,116px) 0;border-top:1px solid var(--line);scroll-margin-top:78px}
+  section.band:first-of-type{border-top:0}
+  .grid{display:grid;gap:20px}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .card.raised{background:var(--surface-2)}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,14,.82);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 26px;display:flex;align-items:center;gap:22px}
+  .brand{font-family:var(--display);font-variation-settings:"wdth" 116;font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:10px}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--form);box-shadow:0 0 0 3px rgba(0,214,143,.22)}
+  .nav-right{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.06em}
+  @media(max-width:560px){.brand{font-size:0;gap:0}}
+
+  /* voortgangsrail */
+  .rail{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:11px}
+  .rail a{width:8px;height:8px;border-radius:50%;border:1px solid var(--line-2);transition:all .25s var(--ease)}
+  .rail a.on{background:var(--fitness);border-color:var(--fitness);transform:scale(1.35)}
+  @media(max-width:1100px){.rail{display:none}}
+
+  /* de stap */
+  .step{display:grid;grid-template-columns:96px 1fr;gap:30px;padding:38px 0;border-top:1px solid var(--line)}
+  .step:first-child{border-top:0}
+  .step-n{font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:800;font-size:3.2rem;line-height:1;letter-spacing:-.04em;color:var(--fitness)}
+  .step-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+  @media(max-width:620px){.step{grid-template-columns:1fr;gap:14px}.step-n{font-size:2.4rem}.step-meta{display:inline;margin-left:12px}}
+
+  .done .step-n{color:var(--form)}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;border:1px solid currentColor}
+  .badge.ok{color:var(--form)}.badge.todo{color:var(--easy)}.badge.hand{color:var(--fitness)}
+
+  .acts{list-style:none;padding:0;margin:16px 0 0;counter-reset:a}
+  .acts li{position:relative;padding:9px 0 9px 34px;border-bottom:1px solid var(--line);font-size:.95rem}
+  .acts li:last-child{border-bottom:0}
+  .acts li::before{counter-increment:a;content:counter(a);position:absolute;left:0;top:11px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line-2);color:var(--dim);font-family:var(--mono);font-size:.66rem;display:flex;align-items:center;justify-content:center}
+  .acts li b{color:#fff}
+
+  .hand{margin-top:20px;border:1px solid var(--line-2);border-left:3px solid var(--fitness);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:rgba(61,123,255,.06);padding:16px 20px}
+  .hand .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fitness);display:block;margin-bottom:8px}
+  .hand p{font-size:.92rem;color:var(--muted);margin:0}
+  .hand code{color:var(--text);background:rgba(255,255,255,.06);padding:1px 6px;border-radius:4px}
+
+  .trap{margin-top:14px;border-left:3px solid var(--easy);background:rgba(240,180,41,.06);padding:14px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.9rem;color:var(--muted)}
+  .trap b{color:var(--easy)}
+
+  .verify{margin-top:14px;font-size:.9rem;color:var(--muted)}
+  .verify::before{content:"✓";color:var(--form);font-weight:700;margin-right:8px}
+
+  .reveal{opacity:0;transform:translateY(20px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  @media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+  footer{border-top:1px solid var(--line);padding:44px 0 58px;color:var(--dim);font-size:.85rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th{text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:0 12px 10px 0;border-bottom:1px solid var(--line-2)}
+  td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  @media(max-width:780px){table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand"><span class="dot"></span>Athlete&nbsp;Intelligence</span>
+    <span class="nav-right">aan de slag · 8 stappen</span>
+  </div>
+</nav>
+
+<header class="band" id="start">
+  <div class="wrap">
+    <p class="eyebrow accent">Onboarding</p>
+    <h1>Acht dingen die<br>jouw handen nodig hebben.</h1>
+    <p style="max-width:64ch;margin-top:24px;font-size:1.1rem;color:var(--muted)">
+      Alles daarna is code die ik schrijf. Maar deze acht stappen kan ik niet voor je doen —
+      ze vragen een login, een QR-scan of een account. Bij elke stap staat <strong>wat je doet</strong>,
+      <strong>waarom het nodig is</strong>, <strong>hoe je weet dat het gelukt is</strong>, en
+      <strong>wat je aan mij doorgeeft</strong>.
+    </p>
+
+    <div class="grid g3 reveal" style="margin-top:44px">
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">1</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare-account</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem">7</div><div class="eyebrow" style="margin:8px 0 0">te doen</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">~45 minuten samen</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">8</div><div class="eyebrow" style="margin:8px 0 0">dingen om door te geven</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">sleutels en id's</p></div>
+    </div>
+
+    <div class="card raised reveal" style="margin-top:26px">
+      <h4 style="margin-bottom:14px">De volgorde maakt uit</h4>
+      <table>
+        <thead><tr><th style="width:44px">#</th><th>Stap</th><th style="width:90px">Tijd</th><th style="width:120px">Blokkeert</th></tr></thead>
+        <tbody>
+          <tr><td class="mono" style="color:var(--form)">1</td><td>Cloudflare</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 0</td></tr>
+          <tr><td class="mono">2</td><td>intervals.icu + Huawei</td><td class="mono">15 min</td><td class="mono" style="font-size:.78rem">Fase 1</td></tr>
+          <tr><td class="mono">3</td><td>Health Connect aanzetten</td><td class="mono">2 min</td><td class="mono" style="font-size:.78rem">vangnet</td></tr>
+          <tr><td class="mono">4</td><td>Tuya IoT + weegschaal</td><td class="mono">15 min</td><td class="mono" style="font-size:.78rem">Fase 1</td></tr>
+          <tr><td class="mono">5</td><td>Telegram-bot</td><td class="mono">5 min</td><td class="mono" style="font-size:.78rem">Fase 7</td></tr>
+          <tr><td class="mono">6</td><td>Hevy + Health Connect</td><td class="mono">2 min</td><td class="mono" style="font-size:.78rem">Fase 6</td></tr>
+          <tr><td class="mono">7</td><td>GitHub-vault</td><td class="mono">3 min</td><td class="mono" style="font-size:.78rem">Fase 5</td></tr>
+          <tr><td class="mono">8</td><td>Model-API</td><td class="mono">3 min</td><td class="mono" style="font-size:.78rem">Fase 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 1 ============ -->
+<section class="band done" id="s1">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">1</div><div class="step-meta">klaar</div></div>
+      <div>
+        <span class="badge ok">gedaan</span>
+        <h2 style="margin-top:14px">Cloudflare</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          Je account bestaat en de MCP heeft er toegang toe. Ik heb gekeken: het is leeg —
+          geen databases, geen workers, geen sites. Precies wat we willen voor een schone start.
+        </p>
+        <div class="hand" style="border-left-color:var(--form);background:rgba(0,214,143,.06)">
+          <span class="lbl" style="color:var(--form)">Wat ik van je nodig had</span>
+          <p>Niets. De MCP werkt met je account-token. <strong>Hier hoef je niets te doen.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="band" id="s2">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">2</div><div class="step-meta">15 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">intervals.icu + je horloge</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          Dit is de ruggengraat. Alles — hardlopen, fietsen, slaap, herstel — komt hier
+          samen, en het is de enige dienst die ook workouts <em>terug</em> naar je horloge
+          kan sturen.
+        </p>
+
+        <ol class="acts">
+          <li>Maak een gratis account op <a href="https://intervals.icu">intervals.icu</a> — geen creditcard.</li>
+          <li>Settings › <b>Connections</b> › verbind <b>Huawei</b>.</li>
+          <li><b>Open nu de Huawei Health-app</b> › <b>Ik</b> › <b>Derde partijen</b> › zorg dat <b>Health Service Kit</b> gekoppeld is.</li>
+          <li>Terug in intervals.icu: verbind ook <b>Wahoo</b>.</li>
+          <li>Settings › onderaan <b>Developer</b> › genereer een API-key. Noteer ook je atleet-id (vorm <code>i123456</code>).</li>
+        </ol>
+
+        <div class="trap">
+          <b>De valkuil die iedereen overkomt:</b> zonder stap 3 komt er <em>niets</em> binnen.
+          De Huawei-app moet expliciet naar de Huawei-cloud uploaden, anders heeft
+          intervals.icu niets om op te halen. Als je later "geen data" ziet, is dit bijna
+          altijd de oorzaak.
+        </div>
+
+        <div class="verify">Je ziet je activiteiten op de intervals.icu-kalender verschijnen.</div>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p>Je <strong>API-key</strong> en je <strong>atleet-id</strong>. Zet ze in een bericht, of
+          bewaar ze — ik vraag erom als we Fase 1 starten. <em>Deel ze niet in een publiek kanaal.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="band" id="s3">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">3</div><div class="step-meta">2 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">Health Connect aanzetten</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          Je vond dit scherm al: de weegschaal kan naar <strong>Health Connect</strong>.
+          Zet het aan — het is een gratis vangnet, en je gewicht staat dan in ieder geval
+          in je telefoon.
+        </p>
+
+        <ol class="acts">
+          <li>Smart Life › het scherm dat je vond (<b>gesynchroniseerd met deze apps</b>).</li>
+          <li>Zet <b>Health Connect</b> aan.</li>
+          <li>Open Health Connect op je telefoon en geef Smart Life toestemming voor gewicht en lichaamsvet.</li>
+        </ol>
+
+        <div class="verify">Je gewicht verschijnt in Health Connect.</div>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p>Niets. Dit is een schakelaar. Maar het is wel het bewijs dat je weegschaal
+          <em>überhaupt</em> data deelt — en dat vertelt me of route 4 nodig is.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="band" id="s4">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">4</div><div class="step-meta">15 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">Tuya IoT + je weegschaal</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          De echte route voor je lichaamscompositie. Hiermee krijg ik niet alleen gewicht en
+          vetpercentage, maar ook spiermassa, vetvrije massa, water, botmassa en visceraal vet
+          — precies wat je nodig hebt voor een spieropbouw-doel.
+        </p>
+
+        <ol class="acts">
+          <li>Maak een gratis account op <a href="https://iot.tuya.com">iot.tuya.com</a>.</li>
+          <li>Maak een <b>Cloud-project</b> aan. Je krijgt een <b>Access ID</b> en <b>Access Secret</b>.</li>
+          <li>In het project: <b>Devices</b> › <b>Link Tuya App Account</b> › <b>Add App Account</b>. Er verschijnt een QR-code.</li>
+          <li>Scan die QR met de <b>Smart Life</b>-app (Me › scan). Je weegschaal verschijnt in de lijst.</li>
+          <li><b>Service API</b> › zoek <b>Body Fat Scale</b> › <b>Authorize</b>.</li>
+          <li>Noteer het <b>Device ID</b> van je weegschaal.</li>
+        </ol>
+
+        <div class="trap">
+          <b>Scan met Smart Life, niet met LSC.</b> LSC Smart Connect is een Tuya-kloon —
+          de koppeling werkt er niet mee. Wie het via LSC probeert krijgt letterlijk
+          <em>"0 devices under the app account"</em>. Zet de weegschaal dus in Smart Life.
+        </div>
+
+        <div class="verify">Je weegschaal staat in de apparatenlijst van je Tuya-project.</div>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p><strong>Access ID</strong>, <strong>Access Secret</strong> en het <strong>Device ID</strong>
+          van de weegschaal. Die drie gaan in de Worker — niet in een bestand dat ergens heen gaat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="band" id="s5">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">5</div><div class="step-meta">5 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">Een Telegram-bot</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          Hiermee komt het systeem naar jou toe: de ochtendbrief met de herstelkaart, en
+          de mogelijkheid om te sparren ("ik ben ziek, wat nu?").
+        </p>
+
+        <ol class="acts">
+          <li>Open Telegram en zoek <b>@BotFather</b>.</li>
+          <li>Stuur <code>/newbot</code>, kies een naam en een gebruikersnaam.</li>
+          <li>Je krijgt een <b>token</b> — die heb ik nodig.</li>
+          <li>Stuur zelf één bericht naar je nieuwe bot (anders mag hij je niet schrijven).</li>
+        </ol>
+
+        <div class="verify">BotFather geeft je een token dat begint met cijfers en een dubbele punt.</div>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p>De <strong>bot-token</strong>. Je chat-id haal ik er zelf uit zodra de bot draait.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="band" id="s6">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">6</div><div class="step-meta">2 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">Hevy</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          Je gebruikt Hevy al. Het gratis plan is genoeg — we hebben geen Pro nodig. Het
+          enige dat moet: zorgen dat je trainingen naar Health Connect gaan, want dat is
+          hoe ze in het load-model komen.
+        </p>
+
+        <ol class="acts">
+          <li>Open Hevy › <b>Settings</b> › zorg dat <b>Health Connect</b> aan staat.</li>
+          <li>Log een oefening en kijk of hij in Health Connect verschijnt.</li>
+        </ol>
+
+        <div class="verify">Een gelogde training staat in Health Connect.</div>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p>Niets. Geen sleutel, geen account. Alleen de bevestiging dat de sync loopt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="band" id="s7">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">7</div><div class="step-meta">3 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">De GitHub-vault</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          Hier komt het geheugen: je profiel, plannen, reviews, race-dossiers. Private repo,
+          zodat het nooit publiek staat.
+        </p>
+
+        <ol class="acts">
+          <li>Maak een <b>private</b> repo aan, bijvoorbeeld <code>athlete-intelligence</code>.</li>
+          <li>Zeg me de naam — ik zet de structuur en de eerste bestanden erin.</li>
+        </ol>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p>De <strong>repo-naam</strong>. Ik heb al toegang tot je GitHub via de MCP, dus
+          aanmaken kan ik ook zelf als je wilt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="band" id="s8">
+  <div class="wrap">
+    <div class="step">
+      <div><div class="step-n">8</div><div class="step-meta">3 min</div></div>
+      <div>
+        <span class="badge todo">te doen</span>
+        <h2 style="margin-top:14px">Een model-API</h2>
+        <p style="color:var(--muted);margin-top:12px">
+          De enige kostenpost van het hele systeem. Opencode zelf is gratis; je betaalt
+          alleen het model dat erachter zit, per gebruik.
+        </p>
+
+        <ol class="acts">
+          <li>Kies een aanbieder — bijvoorbeeld Anthropic, OpenAI of Google.</li>
+          <li>Maak een API-key aan.</li>
+          <li>Zeg me welk model je wilt, dan zet ik de Worker erop in.</li>
+        </ol>
+
+        <div class="trap">
+          <b>Onthoud het principe:</b> rekenen is regels, alleen oordelen kosten tokens. Het
+          dashboard, de readiness-score en alle load-berekeningen draaien <em>zonder</em> het
+          model. Je betaalt dus alleen voor plannen, reviews en sparren.
+        </div>
+
+        <div class="hand">
+          <span class="lbl">Wat ik van je nodig heb</span>
+          <p>De <strong>API-key</strong> en je <strong>model-keuze</strong>. De key gaat in de
+          Worker-secrets, nooit in een bestand.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAARNA ============ -->
+<section class="band" id="daarna">
+  <div class="wrap">
+    <p class="eyebrow accent">En dan</p>
+    <h2>Wat ik daarna doe.</h2>
+    <p style="max-width:64ch;color:var(--muted);margin-top:18px">
+      Zodra de sleutels er zijn, is het mijn beurt. Dit is de volgorde — en het eerste
+      stuk werkt al <strong>zonder één token</strong>.
+    </p>
+
+    <div class="grid g2" style="margin-top:38px;gap:26px;align-items:start">
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Fase 0</span>
+        <h4>Fundament</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          D1-database, de Worker, het Pages-project en Access ervoor. Alles via de MCP —
+          jij hoeft alleen in te loggen als het klaar is.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Fase 1</span>
+        <h4>De data naar binnen</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          intervals.icu, Hevy en je weegschaal. Daarna twee weken observe-only, zodat we
+          zien of alles klopt voordat het iets aanstuurt.
+        </p>
+      </div>
+      <div class="card" style="border-color:var(--line-2)">
+        <span class="eyebrow" style="color:var(--form)">Fase 2</span>
+        <h4>De rekenmachine</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          Alle berekeningen als code, met tests. <strong>Hier zit de waarde</strong> — en
+          vanaf hier heb je een werkend dashboard zonder dat er een token aan te pas komt.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Fase 3</span>
+        <h4>De PWA</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          Installeerbaar op je beginscherm, met de ring, de week en de beschikbaarheidsschuifjes.
+        </p>
+      </div>
+    </div>
+
+    <div class="card raised" style="margin-top:30px">
+      <h4 style="margin-bottom:12px">De eerlijke tijdlijn</h4>
+      <p style="color:var(--muted);font-size:.92rem">
+        Fase 0 en 1 zijn samen een paar uur werk voor mij, plus twee weken wachten op de
+        observe-only periode. Fase 2 is het meeste denkwerk. Reken op <strong>een week of
+        twee</strong> voordat je een dashboard hebt dat je dagelijks opent — en dat is
+        inclusief de tijd die jij nodig hebt voor de acht stappen hierboven.
+      </p>
+    </div>
+
+    <p style="margin-top:34px;color:var(--muted)">
+      Het volledige bouwplan met acceptatiecriteria per fase staat in
+      <span class="mono">PLAN.md</span> in de voorstel-repo. En de onderbouwing — wetenschap,
+      architectuur, interface — staat in de bijlagen.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Athlete Intelligence · onboarding</span>
+    <span class="mono">acht stappen · ~45 minuten · daarna is het mijn beurt</span>
+  </div>
+</footer>
+
+<nav class="rail" aria-label="Stappen">
+  <a href="#start" aria-label="Start"></a>
+  <a href="#s1" aria-label="1 Cloudflare"></a>
+  <a href="#s2" aria-label="2 intervals.icu"></a>
+  <a href="#s3" aria-label="3 Health Connect"></a>
+  <a href="#s4" aria-label="4 Tuya"></a>
+  <a href="#s5" aria-label="5 Telegram"></a>
+  <a href="#s6" aria-label="6 Hevy"></a>
+  <a href="#s7" aria-label="7 GitHub"></a>
+  <a href="#s8" aria-label="8 Model-API"></a>
+  <a href="#daarna" aria-label="Daarna"></a>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+  var els=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && els.length){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px",threshold:.08});
+    els.forEach(function(el){io.observe(el);});
+  } else els.forEach(function(el){el.classList.add("in");});
+
+  var rail=document.querySelector(".rail");
+  if(rail){
+    var dots=[].slice.call(rail.querySelectorAll("a"));
+    var targets=dots.map(function(a){return document.getElementById(a.getAttribute("href").slice(1));}).filter(Boolean);
+    if("IntersectionObserver" in window && targets.length){
+      var spy=new IntersectionObserver(function(en){
+        en.forEach(function(e){ if(e.isIntersecting){ var i=targets.indexOf(e.target); dots.forEach(function(d,j){d.classList.toggle("on",i===j);}); }});
+      },{rootMargin:"-45% 0px -45% 0px"});
+      targets.forEach(function(t){spy.observe(t);});
+    }
+  }
+})();
+</script>
+</body>
+</html>
