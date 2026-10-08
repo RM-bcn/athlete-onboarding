@@ -1,6 +1,6 @@
 # Athlete Intelligence — onboarding
 
-De visuele gids met de acht dingen die **jouw** handen nodig hebben voordat ik kan bouwen.
+De visuele gids met de zes stappen die **jouw** handen nodig hadden — allemaal klaar.
 Live op Cloudflare:
 
 **https://athlete-onboarding.aq-bd6.workers.dev**
@@ -10,16 +10,17 @@ Live op Cloudflare:
 Per stap: **wat je doet**, **waarom het nodig is**, **hoe je weet dat het gelukt is**, en
 **wat je aan mij doorgeeft**. Plus de valkuilen die iedereen overkomt.
 
-| # | Stap | Tijd | Blokkeert |
+| # | Stap | Status | Blokkeert |
 |---|---|---|---|
 | 1 | Cloudflare | klaar | Fase 0 |
-| 2 | intervals.icu + Huawei | 15 min | Fase 1 |
-| 3 | Health Connect aanzetten | 2 min | vangnet |
-| 4 | Tuya IoT + weegschaal | 15 min | Fase 1 |
-| 5 | Telegram-bot | 5 min | Fase 7 |
-| 6 | Hevy + Health Connect | 2 min | Fase 6 |
-| 7 | GitHub-vault | 3 min | Fase 5 |
-| 8 | Model-API | 3 min | Fase 5 |
+| 2 | intervals.icu + Huawei | klaar | Fase 1 |
+| 3 | Telegram-bot | klaar | Fase 7 |
+| 4 | Hevy + AQ-log | klaar | Fase 6 |
+| 5 | GitHub + app | klaar | Fase 5 |
+| 6 | Model-API | klaar | Fase 5 |
+
+De weegschaal (lichaamscompositie) is geen losse stap meer maar een toekomstige fase, via
+de Tuya Cloud API.
 
 ## Deployen
 
