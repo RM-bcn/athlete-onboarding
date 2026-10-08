@@ -122,7 +122,7 @@
     <div class="grid g3 reveal" style="margin-top:44px">
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">6</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Telegram · Hevy · vault · model</p></div>
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">0</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">niets meer — de weegschaal is een toekomstige fase</p></div>
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt op Telegram — en het staat achter een login</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt — in de app én op Telegram — en het staat achter een login</p></div>
     </div>
 
     <div class="card raised reveal" style="margin-top:26px">
@@ -254,7 +254,7 @@
 
         <ol class="acts">
           <li>Blijf je trainingen in Hevy loggen, zoals je al deed.</li>
-          <li>Na een sessie: <code>log kracht 50 8</code> in Telegram (minuten · RPE), of via het log-scherm.</li>
+          <li>Na een sessie: <code>log kracht 50 8</code> in Telegram (minuten · RPE), of via het Feedback-scherm.</li>
         </ol>
 
         <div class="verify">Je krachtsessie staat in de AQ-week, met de load erbij.</div>
@@ -390,7 +390,7 @@
         <span class="eyebrow" style="color:var(--form)">Fase 2 · klaar</span>
         <h4>De rekenmachine</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Alle berekeningen als code, met tests (78 groen). <strong>Hier zit de waarde</strong> —
+          Alle berekeningen als code, met tests (193 groen). <strong>Hier zit de waarde</strong> —
           vanaf hier heb je een werkend dashboard zonder dat er één token aan te pas komt.
         </p>
       </div>
@@ -398,16 +398,18 @@
         <span class="eyebrow" style="color:var(--form)">Fase 3 · klaar</span>
         <h4>De PWA</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Vandaag en de week, installeerbaar op je beginscherm, en offline met de
-          laatste snapshot. Alles achter de login.
+          Acht schermen: Vandaag, Herstel, Week, Trends, Coach, Kracht, Invoer en Feedback.
+          Installeerbaar op je beginscherm, en offline met de laatste snapshot. Alles achter
+          de login.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--form)">Fase 4 · klaar</span>
         <h4>Invoer</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Je kunt nu iets teruggeven: beschikbaarheid met schuifjes, een sessie loggen
-          ná de training (duur + RPE), en ziek melden.
+          Je kunt nu iets teruggeven: beschikbaarheid per dag en per sport, en <strong>Feedback</strong>
+          op een afgeronde training — RPE, een score 0–100%, gepland/iets anders/overgeslagen,
+          een notitie en plan-vs-gedaan. Plus ziek melden.
         </p>
       </div>
       <div class="card">
@@ -416,8 +418,9 @@
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
           De cijfers komen uit de regels, het oordeel uit een model. Standaard
           <span class="mono">deepseek-v4-flash</span> (via OpenCode Go), met een automatische
-          fallback-keten. Valt een model weg, dan waarschuwt de coach en gaat hij door op
-          het volgende goedkope model.
+          fallback-keten. De coach zit nu ook <strong>in de app</strong> en deelt één gesprek met
+          Telegram. Valt een model weg, dan waarschuwt de coach en gaat hij door op het volgende
+          goedkope model.
         </p>
       </div>
       <div class="card">
@@ -425,7 +428,9 @@
         <h4>Telegram</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
           De webhook staat live, de coach appt terug, en elke ochtend om 07:00 komt de
-          herstelbrief vanzelf. Twee richtingen: jij stuurt, hij antwoordt.
+          herstelbrief vanzelf — met de <strong>herstelkaart als PNG-foto</strong>. Na een nieuwe
+          training vraagt de coach hoe het ging (knoppen: verdict › RPE). Twee richtingen: jij
+          stuurt, hij antwoordt.
         </p>
       </div>
       <div class="card" style="border-color:var(--line-2)">
@@ -518,12 +523,14 @@
         <span class="eyebrow" style="color:var(--form)">Nu · in gebruik</span>
         <h4>Wat je vandaag al hebt</h4>
         <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
+          <li>Acht schermen: Vandaag · Herstel · Week · Trends · Coach · Kracht · Invoer · Feedback</li>
           <li>Dashboard (PWA, offline, achter login)</li>
           <li>intervals.icu-data: slaap, rusthartslag, trainingen</li>
-          <li>Rekenregels: readiness, load, 80/20 (78 tests)</li>
-          <li>Invoer: beschikbaarheid, loggen, ziek melden</li>
-          <li>Coach op Telegram met een echt model + fallback</li>
-          <li>Ochtendbrief om 07:00</li>
+          <li>Rekenregels: readiness, load, 80/20, patronen, Body Battery (193 tests)</li>
+          <li>Coach met een echt model + fallback — in de app én op Telegram, één gesprek</li>
+          <li>Je doel doorgeven; de coach zet het vast en periodiseert (zichtbaar in Trends)</li>
+          <li>Feedback-lus: RPE, score, plan-vs-gedaan › valkuilen in Trends</li>
+          <li>Ochtendbrief om 07:00, met de herstelkaart als PNG-foto</li>
           <li>Workout aanleveren (.fit/screenshot) › kalender › horloge</li>
           <li>Commando <span class="mono">push</span></li>
         </ul>
@@ -533,9 +540,9 @@
         <h4>Wat ik hierna bouw</h4>
         <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
           <li>De coach past je week echt aan (verplaatsen, verzachten), niet alleen adviseren</li>
-          <li>Alles ook in de app, niet alleen Telegram</li>
           <li>Een meerdaags plan in één keer aanleveren</li>
           <li>Weekreview met het model</li>
+          <li>Het hypnogram (slaapfases) — Huawei levert die nog niet</li>
         </ul>
       </div>
       <div class="card">
@@ -565,23 +572,35 @@
         <span class="eyebrow" style="color:var(--fitness)">Ochtend</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           Om <b>07:00</b> krijg je automatisch een bericht op Telegram: readiness, slaap, je vorm,
-          en wat er gepland staat. Eén bericht per dag — geen ruis.
+          en wat er gepland staat — met de <b>herstelkaart als PNG-foto</b>. Eén bericht per dag,
+          geen ruis.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--fitness)">De app</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
-          Zet de PWA op je beginscherm en open hem wanneer je wilt. Je ziet de readiness-ring,
-          wat er vandaag gepland is, de week, de 80/20 en je recente sessies. Ook offline.
+          Zet de PWA op je beginscherm en open hem wanneer je wilt. Vandaag toont het oordeel met
+          de reden, je sessie en de <b>Body Battery</b>; Herstel de ring en de bijdragers; Trends de
+          seizoensgrafiek, je doel en je valkuilen; en de <b>Coach-tab</b> is hetzelfde gesprek als op
+          Telegram. Ook offline.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--fitness)">Telegram</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           <span class="mono">status</span> · <span class="mono">week</span> ·
-          <span class="mono">push</span> · <span class="mono">log loop 45 6</span> ·
+          <span class="mono">push</span> · <span class="mono">plan</span> ·
+          <span class="mono">mijn doel is …</span> · <span class="mono">log loop 45 6</span> ·
           <span class="mono">ik ben ziek</span> · <span class="mono">help</span>. De coach antwoordt
-          met je eigen cijfers.
+          met je eigen cijfers, en het gesprek is hetzelfde als in de app.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Je doel doorgeven</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          Zeg tegen de coach wat je wilt: <span class="mono">mijn doel is de halve marathon op
+          5:07/km</span>. Hij zet het vast en bouwt de periodisering (Base › Build › Peak › Taper),
+          zichtbaar in <b>Trends</b>. Meerdere doelen kunnen naast elkaar staan.
         </p>
       </div>
       <div class="card">
@@ -595,14 +614,15 @@
         <span class="eyebrow" style="color:var(--fitness)">Na de training</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           Log wat je deed: <span class="mono">log fiets 60 7</span> in Telegram (sport · minuten ·
-          RPE), of via het log-scherm in de app. De belasting rekent het systeem uit.
+          RPE), of geef <b>Feedback</b> op het Feedback-scherm. De coach vraagt na een nieuwe
+          training ook zelf hoe het ging (knoppen: verdict › RPE). De belasting rekent het systeem uit.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--fitness)">Je week instellen</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
-          In de app bij <b>invoer</b>: schuif per dagdeel de minuten en kies de sport. Dat is je
-          plan vooraf; wat je daarna doet, log je.
+          In de app bij <b>Invoer</b>: kies per dag en per sport je beschikbaarheid. Dat is je
+          plan vooraf; wat je daarna doet, geef je terug via Feedback.
         </p>
       </div>
     </div>
