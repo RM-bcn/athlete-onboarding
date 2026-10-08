@@ -121,7 +121,7 @@
 
     <div class="grid g3 reveal" style="margin-top:44px">
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">6</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Health Connect · Telegram · Hevy · vault</p></div>
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--easy)">2</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de weegschaal en de model-API</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--easy)">2</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Health Sync (de brug) en de model-API</p></div>
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt op Telegram — en het staat achter een login</p></div>
     </div>
 
@@ -133,7 +133,7 @@
           <tr><td class="mono" style="color:var(--form)">1</td><td>Cloudflare</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 0</td></tr>
           <tr><td class="mono" style="color:var(--form)">2</td><td>intervals.icu + Huawei</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 1</td></tr>
           <tr><td class="mono" style="color:var(--form)">3</td><td>Health Connect aanzetten</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">vangnet</td></tr>
-          <tr><td class="mono" style="color:var(--easy)">4</td><td>Tuya IoT + weegschaal</td><td class="mono" style="color:var(--easy)">nog open</td><td class="mono" style="font-size:.78rem">Fase 1</td></tr>
+          <tr><td class="mono" style="color:var(--easy)">4</td><td>Health Sync › Intervals.icu</td><td class="mono" style="color:var(--easy)">nog open</td><td class="mono" style="font-size:.78rem">Fase 1</td></tr>
           <tr><td class="mono" style="color:var(--form)">5</td><td>Telegram-bot</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 7</td></tr>
           <tr><td class="mono" style="color:var(--form)">6</td><td>Hevy + Health Connect</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 6</td></tr>
           <tr><td class="mono" style="color:var(--form)">7</td><td>GitHub-vault</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 5</td></tr>
@@ -215,30 +215,28 @@
         <span class="badge ok">gedaan</span>
         <h2 style="margin-top:14px">Health Connect aanzetten</h2>
         <p style="color:var(--muted);margin-top:12px">
-          Je vond dit scherm al: de weegschaal kan naar <strong>Health Connect</strong>.
-          Zet het aan — het is een gratis vangnet, en je gewicht staat dan in ieder geval
-          in je telefoon.
+          Health Connect is de <strong>hub op je telefoon</strong>: al je gezondheids- en
+          fitnessapps schrijven erin — je horloge, Smart Life met je weegschaal, enz. Zet
+          hem aan en geef de apps toestemming om te schrijven.
         </p>
 
         <ol class="acts">
-          <li>Smart Life › het scherm dat je vond (<b>gesynchroniseerd met deze apps</b>).</li>
-          <li>Zet <b>Health Connect</b> aan.</li>
-          <li>Open Health Connect op je telefoon en geef Smart Life toestemming voor gewicht en lichaamsvet.</li>
+          <li>Open <b>Health Connect</b> (Android 14+: Instellingen › Beveiliging en privacy › Privacy › Health Connect).</li>
+          <li>Geef je apps schrijf-toegang: <b>Smart Life</b> (gewicht, lichaamsvet), je horloge-app, enz.</li>
+          <li>Controleer dat je gewicht en je slaap er staan.</li>
         </ol>
 
         <div class="trap">
-          <b>Correctie op ons plan — belangrijk.</b> Health Connect is een databank <em>op je
-          telefoon</em>. AQ draait in de cloud, en er is <b>geen server-API</b> voor Health
-          Connect. Het is dus een <b>vangnet op je telefoon</b>, geen pijplijn naar AQ.
-          De weegschaal bereikt AQ via <b>Tuya</b> (stap 4) — niet via Health Connect.
+          <b>Onthoud dit.</b> Health Connect is een databank <em>op je telefoon</em> — er is
+          <b>geen server-API</b>. De hub verzamelt, maar stuurt niets naar de cloud. De brug
+          naar AQ is <b>stap 4</b> (Health Sync), niet Health Connect zelf.
         </div>
 
-        <div class="verify">Je gewicht verschijnt in Health Connect.</div>
+        <div class="verify">Je gewicht en je slaap staan in Health Connect.</div>
 
         <div class="hand">
           <span class="lbl">Wat ik van je nodig heb</span>
-          <p>Niets. Dit is een schakelaar. Het bewijs dat je weegschaal <em>überhaupt</em> data
-          deelt — maar het transport naar AQ loopt via Tuya, niet hierlangs.</p>
+          <p>Niets. Dit is de hub. Het transport naar AQ loopt via stap 4.</p>
         </div>
       </div>
     </div>
@@ -249,37 +247,35 @@
 <section class="band" id="s4">
   <div class="wrap">
     <div class="step">
-      <div><div class="step-n">4</div><div class="step-meta">15 min</div></div>
+      <div><div class="step-n">4</div><div class="step-meta">10 min</div></div>
       <div>
         <span class="badge todo">te doen</span>
-        <h2 style="margin-top:14px">Tuya IoT + je weegschaal</h2>
+        <h2 style="margin-top:14px">Health Sync — de brug naar Intervals.icu</h2>
         <p style="color:var(--muted);margin-top:12px">
-          De echte route voor je lichaamscompositie. Hiermee krijg ik niet alleen gewicht en
-          vetpercentage, maar ook spiermassa, vetvrije massa, water, botmassa en visceraal vet
-          — precies wat je nodig hebt voor een spieropbouw-doel.
+          Health Connect staat op je telefoon, maar AQ draait in de cloud. De brug is
+          <b>Health Sync</b> (van appyhapps): het leest Health Connect en schrijft naar
+          <b>Intervals.icu</b>. Zo komen je gewicht, slaap, rusthartslag en stappen in AQ —
+          zonder dat we zelf iets bouwen.
         </p>
 
         <ol class="acts">
-          <li>Maak een gratis account op <a href="https://iot.tuya.com">iot.tuya.com</a>.</li>
-          <li>Maak een <b>Cloud-project</b> aan. Je krijgt een <b>Access ID</b> en <b>Access Secret</b>.</li>
-          <li>In het project: <b>Devices</b> › <b>Link Tuya App Account</b> › <b>Add App Account</b>. Er verschijnt een QR-code.</li>
-          <li>Scan die QR met de <b>Smart Life</b>-app (Me › scan). Je weegschaal verschijnt in de lijst.</li>
-          <li><b>Service API</b> › zoek <b>Body Fat Scale</b> › <b>Authorize</b>.</li>
-          <li>Noteer het <b>Device ID</b> van je weegschaal.</li>
+          <li>Installeer <b>Health Sync</b> — Play Store, de APK, of de Huawei AppGallery-versie. Een goedkope eenmalige aankoop.</li>
+          <li>Kies als <b>bron</b>: <b>Health Connect</b>.</li>
+          <li>Kies als <b>bestemming</b>: <b>Intervals.icu</b> en log in met je Intervals.icu-account.</li>
+          <li>Zet aan wat je wilt: activiteiten, <b>gewicht</b>, slaap, rusthartslag, stappen.</li>
+          <li>Laat de eerste sync lopen en controleer je wellness-log in Intervals.icu.</li>
         </ol>
 
         <div class="trap">
-          <b>Scan met Smart Life, niet met LSC.</b> LSC Smart Connect is een Tuya-kloon —
-          de koppeling werkt er niet mee. Wie het via LSC probeert krijgt letterlijk
-          <em>"0 devices under the app account"</em>. Zet de weegschaal dus in Smart Life.
+          <b>Health Connect alleen is niet genoeg.</b> Zonder deze brug bereikt niets de cloud.
+          Dit is precies de schakel die eerder ontbrak — en hij neemt je weegschaal meteen mee.
         </div>
 
-        <div class="verify">Je weegschaal staat in de apparatenlijst van je Tuya-project.</div>
+        <div class="verify">Je gewicht (en je slaap) verschijnen in je Intervals.icu-wellness.</div>
 
         <div class="hand">
           <span class="lbl">Wat ik van je nodig heb</span>
-          <p><strong>Access ID</strong>, <strong>Access Secret</strong> en het <strong>Device ID</strong>
-          van de weegschaal. Die drie gaan in de Worker — niet in een bestand dat ergens heen gaat.</p>
+          <p>Alleen de bevestiging dat het synct. Daarna komt de data automatisch in AQ.</p>
         </div>
       </div>
     </div>
@@ -490,6 +486,15 @@
           wacht op je doel, je materiaal en je beschikbaarheid.
         </p>
       </div>
+      <div class="card" style="border-color:var(--line-2)">
+        <span class="eyebrow" style="color:var(--dim)">Later · toekomstige fase</span>
+        <h4>De weegschaal (lichaamscompositie)</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          Gewicht komt al mee via Health Connect › Health Sync (stap 4). Voor de volledige
+          lichaamscompositie — vetpercentage, spiermassa, water, visceraal vet — koppelen we
+          later de weegschaal rechtstreeks via <b>Tuya</b>. Niet nodig om te starten.
+        </p>
+      </div>
     </div>
 
     <div class="card raised" style="margin-top:30px">
@@ -522,7 +527,7 @@
   <a href="#s1" aria-label="1 Cloudflare"></a>
   <a href="#s2" aria-label="2 intervals.icu"></a>
   <a href="#s3" aria-label="3 Health Connect"></a>
-  <a href="#s4" aria-label="4 Tuya"></a>
+  <a href="#s4" aria-label="4 Health Sync"></a>
   <a href="#s5" aria-label="5 Telegram"></a>
   <a href="#s6" aria-label="6 Hevy"></a>
   <a href="#s7" aria-label="7 GitHub"></a>
