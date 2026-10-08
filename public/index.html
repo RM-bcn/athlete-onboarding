@@ -120,8 +120,8 @@
     </p>
 
     <div class="grid g3 reveal" style="margin-top:44px">
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">5</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Telegram · Hevy · vault</p></div>
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--easy)">1</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de model-API</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">6</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Telegram · Hevy · vault · model</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">0</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">niets meer — de weegschaal is een toekomstige fase</p></div>
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt op Telegram — en het staat achter een login</p></div>
     </div>
 
@@ -135,7 +135,7 @@
           <tr><td class="mono" style="color:var(--form)">3</td><td>Telegram-bot</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 7</td></tr>
           <tr><td class="mono" style="color:var(--form)">4</td><td>Hevy + de AQ-log</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 6</td></tr>
           <tr><td class="mono" style="color:var(--form)">5</td><td>GitHub + app</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 5</td></tr>
-          <tr><td class="mono" style="color:var(--easy)">6</td><td>Model-API</td><td class="mono" style="color:var(--easy)">nog open</td><td class="mono" style="font-size:.78rem">Fase 5</td></tr>
+          <tr><td class="mono" style="color:var(--form)">6</td><td>Model-API</td><td class="mono" style="color:var(--form)">klaar</td><td class="mono" style="font-size:.78rem">Fase 5</td></tr>
         </tbody>
       </table>
     </div>
@@ -295,22 +295,22 @@
 </section>
 
 <!-- ============ 6 ============ -->
-<section class="band" id="s6">
+<section class="band done" id="s6">
   <div class="wrap">
     <div class="step">
-      <div><div class="step-n">6</div><div class="step-meta">3 min</div></div>
+      <div><div class="step-n">6</div><div class="step-meta">klaar</div></div>
       <div>
-        <span class="badge todo">te doen</span>
+        <span class="badge ok">gedaan</span>
         <h2 style="margin-top:14px">Een model-API</h2>
         <p style="color:var(--muted);margin-top:12px">
-          De enige kostenpost van het hele systeem. Opencode zelf is gratis; je betaalt
-          alleen het model dat erachter zit, per gebruik.
+          De enige kostenpost van het hele systeem — en een kleine: fracties van een cent per
+          antwoord. De coach draait op een model via <b>OpenCode Go</b>.
         </p>
 
         <ol class="acts">
-          <li>Kies een aanbieder — bijvoorbeeld Anthropic, OpenAI of Google.</li>
-          <li>Maak een API-key aan.</li>
-          <li>Zeg me welk model je wilt, dan zet ik de Worker erop in.</li>
+          <li>Een <b>service-account key</b> aangemaakt in de OpenCode Console (permissie: inference).</li>
+          <li>De sleutel staat in de Worker als secret <span class="mono">MODEL_API_KEY</span> — nooit in de app of in git.</li>
+          <li>Standaardmodel <b>deepseek-v4-flash</b>, met een <b>automatische fallback</b> naar mimo, glm en minimax.</li>
         </ol>
 
         <div class="trap">
@@ -319,10 +319,10 @@
           model. Je betaalt dus alleen voor plannen, reviews en sparren.
         </div>
 
-        <div class="hand">
-          <span class="lbl">Wat ik van je nodig heb</span>
-          <p>De <strong>API-key</strong> en je <strong>model-keuze</strong>. De key gaat in de
-          Worker-secrets, nooit in een bestand.</p>
+        <div class="hand" style="border-left-color:var(--form);background:rgba(0,214,143,.06)">
+          <span class="lbl" style="color:var(--form)">Klaar</span>
+          <p>De coach praat met een echt model. Valt een model weg, dan zakt hij automatisch
+          naar het volgende goedkope model en waarschuwt hij je.</p>
         </div>
       </div>
     </div>
@@ -354,15 +354,15 @@
         <h4>De data naar binnen</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
           intervals.icu stroomt binnen: 121 dagen wellness (mét slaap) en 119 activiteiten.
-          De sync loopt elk uur, en ververst zodra je de app opent. Hevy en de weegschaal
-          moeten nog.
+          De sync loopt elk uur, en ververst zodra je de app opent. Hevy via de AQ-log;
+          de weegschaal is een toekomstige fase.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--form)">Fase 2 · klaar</span>
         <h4>De rekenmachine</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Alle berekeningen als code, met tests (71 groen). <strong>Hier zit de waarde</strong> —
+          Alle berekeningen als code, met tests (75 groen). <strong>Hier zit de waarde</strong> —
           vanaf hier heb je een werkend dashboard zonder dat er één token aan te pas komt.
         </p>
       </div>
@@ -383,12 +383,13 @@
         </p>
       </div>
       <div class="card">
-        <span class="eyebrow" style="color:var(--form)">Fase 5 · werkt</span>
+        <span class="eyebrow" style="color:var(--form)">Fase 5 · klaar</span>
         <h4>De coach</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          De coach antwoordt nu al — volledig op regels. <span class="mono">status</span>,
-          <span class="mono">week</span>, loggen en ziek melden via Telegram. De model-API
-          is optioneel en komt later voor de zware oordelen.
+          De cijfers komen uit de regels, het oordeel uit een model. Standaard
+          <span class="mono">deepseek-v4-flash</span> (via OpenCode Go), met een automatische
+          fallback-keten. Valt een model weg, dan waarschuwt de coach en gaat hij door op
+          het volgende goedkope model.
         </p>
       </div>
       <div class="card">
