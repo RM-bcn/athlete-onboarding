@@ -122,7 +122,7 @@
     <div class="grid g3 reveal" style="margin-top:44px">
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">6</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Health Connect · Telegram · Hevy · vault</p></div>
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--easy)">2</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de weegschaal en de model-API</p></div>
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt — en het staat achter een login</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt op Telegram — en het staat achter een login</p></div>
     </div>
 
     <div class="card raised reveal" style="margin-top:26px">
@@ -295,8 +295,8 @@
         <span class="badge ok">gedaan</span>
         <h2 style="margin-top:14px">Een Telegram-bot</h2>
         <p style="color:var(--muted);margin-top:12px">
-          Hiermee komt het systeem naar jou toe: de ochtendbrief met de herstelkaart, en
-          de mogelijkheid om te sparren ("ik ben ziek, wat nu?").
+          Hiermee komt het systeem naar jou toe: de ochtendbrief om 07:00, en de
+          mogelijkheid om te sparren ("ik ben ziek, wat nu?").
         </p>
 
         <ol class="acts">
@@ -306,11 +306,11 @@
           <li>Stuur zelf één bericht naar je nieuwe bot (anders mag hij je niet schrijven).</li>
         </ol>
 
-        <div class="verify">BotFather geeft je een token dat begint met cijfers en een dubbele punt.</div>
+        <div class="verify">De bot is live: <b>@AthleteIntelligencebot</b> antwoordt op <span class="mono">status</span>, <span class="mono">week</span>, <span class="mono">log loop 45 6</span> en "ik ben ziek".</div>
 
-        <div class="hand">
-          <span class="lbl">Wat ik van je nodig heb</span>
-          <p>De <strong>bot-token</strong>. Je chat-id haal ik er zelf uit zodra de bot draait.</p>
+        <div class="hand" style="border-left-color:var(--form);background:rgba(0,214,143,.06)">
+          <span class="lbl" style="color:var(--form)">Klaar</span>
+          <p>De webhook staat naar de Worker, en de coach appt terug. Stuur hem gerust iets.</p>
         </div>
       </div>
     </div>
@@ -326,21 +326,23 @@
         <span class="badge ok">gedaan</span>
         <h2 style="margin-top:14px">Hevy</h2>
         <p style="color:var(--muted);margin-top:12px">
-          Je gebruikt Hevy al. Het gratis plan is genoeg — we hebben geen Pro nodig. Het
-          enige dat moet: zorgen dat je trainingen naar Health Connect gaan, want dat is
-          hoe ze in het load-model komen.
+          Je gebruikt Hevy al. Het gratis plan is genoeg — we hebben geen Pro nodig.
+          <strong>Correctie op het plan:</strong> Hevy's API zit achter Pro, en Health Connect
+          bereikt AQ niet (het is een databank op je telefoon, zonder server-API). De
+          <b>gewichten</b> die je tilt, typ je daarom over in de AQ-log — via de app of gewoon
+          in Telegram. De <b>hartslag</b> komt van je horloge via intervals.icu.
         </p>
 
         <ol class="acts">
-          <li>Open Hevy › <b>Settings</b> › zorg dat <b>Health Connect</b> aan staat.</li>
-          <li>Log een oefening en kijk of hij in Health Connect verschijnt.</li>
+          <li>Blijf je trainingen in Hevy loggen, zoals je al deed.</li>
+          <li>Na een sessie: <code>log kracht 50 8</code> in Telegram (minuten · RPE), of via het log-scherm.</li>
         </ol>
 
-        <div class="verify">Een gelogde training staat in Health Connect.</div>
+        <div class="verify">Je krachtsessie staat in de AQ-week, met de load erbij.</div>
 
-        <div class="hand">
-          <span class="lbl">Wat ik van je nodig heb</span>
-          <p>Niets. Geen sleutel, geen account. Alleen de bevestiging dat de sync loopt.</p>
+        <div class="hand" style="border-left-color:var(--form);background:rgba(0,214,143,.06)">
+          <span class="lbl" style="color:var(--form)">Klaar</span>
+          <p>Geen sleutel nodig. Health Connect mag aan blijven als vangnet op je telefoon, maar AQ leunt er niet op.</p>
         </div>
       </div>
     </div>
@@ -430,19 +432,20 @@
         </p>
       </div>
       <div class="card">
-        <span class="eyebrow" style="color:var(--easy)">Fase 1 · loopt</span>
+        <span class="eyebrow" style="color:var(--form)">Fase 1 · klaar</span>
         <h4>De data naar binnen</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          intervals.icu stroomt al binnen: 121 dagen wellness en 119 activiteiten.
-          Hevy en de weegschaal moeten nog.
+          intervals.icu stroomt binnen: 121 dagen wellness (mét slaap) en 119 activiteiten.
+          De sync loopt elk uur, en ververst zodra je de app opent. Hevy en de weegschaal
+          moeten nog.
         </p>
       </div>
-      <div class="card" style="border-color:var(--line-2)">
-        <span class="eyebrow" style="color:var(--fitness)">Fase 2 · nu bezig</span>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--form)">Fase 2 · klaar</span>
         <h4>De rekenmachine</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Alle berekeningen als code, met tests. <strong>Hier zit de waarde</strong> — en
-          vanaf hier heb je een werkend dashboard zonder dat er een token aan te pas komt.
+          Alle berekeningen als code, met tests (71 groen). <strong>Hier zit de waarde</strong> —
+          vanaf hier heb je een werkend dashboard zonder dat er één token aan te pas komt.
         </p>
       </div>
       <div class="card">
@@ -459,6 +462,31 @@
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
           Je kunt nu iets teruggeven: beschikbaarheid met schuifjes, een sessie loggen
           ná de training (duur + RPE), en ziek melden.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--form)">Fase 5 · werkt</span>
+        <h4>De coach</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          De coach antwoordt nu al — volledig op regels. <span class="mono">status</span>,
+          <span class="mono">week</span>, loggen en ziek melden via Telegram. De model-API
+          is optioneel en komt later voor de zware oordelen.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--form)">Fase 7 · klaar</span>
+        <h4>Telegram</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          De webhook staat live, de coach appt terug, en elke ochtend om 07:00 komt de
+          herstelbrief vanzelf. Twee richtingen: jij stuurt, hij antwoordt.
+        </p>
+      </div>
+      <div class="card" style="border-color:var(--line-2)">
+        <span class="eyebrow" style="color:var(--easy)">Fase 6 · nog open</span>
+        <h4>Kracht</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+          Een krachtblok van maanden, met oefeningen en demo's, en de load die meeweegt
+          in je week.
         </p>
       </div>
     </div>
