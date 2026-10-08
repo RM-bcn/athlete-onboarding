@@ -121,7 +121,7 @@
 
     <div class="grid g3 reveal" style="margin-top:44px">
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">6</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Telegram · Hevy · vault · model</p></div>
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">0</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">niets meer — de weegschaal is een toekomstige fase</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">0</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">niets meer van de zes stappen — los daarvan wachten het hypnogram, Cloudflare Access en de weegschaal (Tuya) op de gebruiker</p></div>
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt — in de app én op Telegram — en het staat achter een login</p></div>
     </div>
 
@@ -244,34 +244,35 @@
         <span class="badge ok">gedaan</span>
         <h2 style="margin-top:14px">Hevy + de AQ-log</h2>
         <p style="color:var(--muted);margin-top:12px">
-          Je gebruikt Hevy al. <strong>De route nu:</strong> Hevy's gratis plan heeft
-          <em>geen</em> API — die zit achter Pro, en we hebben geen Pro nodig. Wat je tilt, log
-          je daarom over in de <b>AQ-log</b>: een handmatige sessie met <b>duur</b> en <b>RPE</b>,
-          via de app of gewoon in Telegram. De <b>hartslag</b> tijdens het krachtwerk komt van je
-          horloge via intervals.icu. Zo telt kracht mee in het load-model, zonder iets te
-          synchroniseren dat niet kan.
+          Je gebruikt Hevy al, maar dat hoeft niet meer. <strong>De makkelijkste route nu:</strong>
+          log je kracht direct in de app op het <b>Kracht-scherm</b> — kies oefeningen uit de
+          bibliotheek en voeg sets toe (<b>reps + kg</b>). De <b>tonnage</b> (som reps × gewicht) en
+          de <b>load</b> rekent het systeem uit, en de sessie telt mee in je week. Hevy's gratis plan
+          heeft <em>geen</em> API; wil je het toch als logboek houden, dan kan dat. De
+          <b>hartslag</b> tijdens het krachtwerk komt van je horloge via intervals.icu. Zo telt
+          kracht mee in het load-model, zonder iets te synchroniseren dat niet kan.
         </p>
 
         <ol class="acts">
-          <li>Blijf je trainingen in Hevy loggen, zoals je al deed.</li>
-          <li>Na een sessie: <code>log kracht 50 8</code> in Telegram (minuten · RPE), of via het Feedback-scherm.</li>
+          <li>Open het <b>Kracht-scherm</b> in de app, kies je oefeningen en voeg je sets toe (reps + kg).</li>
+          <li>Sneller kan ook: <code>log kracht 50 8</code> in Telegram (minuten · RPE), of de AQ-log. Optioneel blijf je Hevy als logboek gebruiken.</li>
         </ol>
 
         <div class="verify">Je krachtsessie staat in de AQ-week, met de load erbij.</div>
 
         <div class="hand" style="border-left-color:var(--form);background:rgba(0,214,143,.06)">
           <span class="lbl" style="color:var(--form)">Klaar</span>
-          <p>Geen sleutel nodig. AQ leunt niet op Health Connect — de gegevens komen via intervals.icu en de AQ-log.</p>
+          <p>Geen sleutel nodig. AQ leunt niet op Health Connect — de gegevens komen via intervals.icu en je kracht-logg in de app.</p>
         </div>
 
         <div class="card raised" style="margin-top:22px">
-          <span class="eyebrow" style="color:var(--easy)">Optie voor later</span>
+          <span class="eyebrow" style="color:var(--easy)">Optioneel · niet meer nodig</span>
           <h4>Een open-source krachttracker met een echte API</h4>
           <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-            Hevy's gratis plan heeft geen API, dus de set-details (gewicht x reps) komen nu niet
-            automatisch binnen. Wil je dat later wel, dan is een self-hostbare tracker met een
-            echte API het overwegen waard. <em>Eerlijk: dit is een optie, niets hiervan is al
-            gebouwd.</em>
+            Sinds het Kracht-scherm log je de set-details (gewicht x reps) direct in de app, dus
+            je hebt geen extra tracker meer nodig. De twee opties hieronder zijn daarmee vervallen
+            — ze staan er alleen nog als achtergrond. <em>Eerlijk: hier is niets van gebouwd, en
+            dat hoeft ook niet meer.</em>
           </p>
           <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.9rem;line-height:1.75">
             <li><b>wger</b> — self-hosted via Docker (AGPL), met een gedocumenteerde REST API
@@ -285,9 +286,8 @@
             uitzoekwerk zijn.</li>
           </ul>
           <div class="trap" style="margin-top:16px">
-            <b>Aanbeveling:</b> blijf voor nu bij <b>Hevy + de AQ-log</b> — gratis en precies
-            genoeg voor de load. Houd <b>wger</b> achter de hand als je de set-details
-            automatisch wilt.
+            <b>Aanbeveling:</b> log kracht gewoon in de app. Hevy kan als logboek blijven, maar
+            <b>wger</b> of <b>openGym</b> is niet meer nodig voor de set-details.
           </div>
         </div>
       </div>
@@ -382,7 +382,7 @@
         <h4>De data naar binnen</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
           intervals.icu stroomt binnen: 121 dagen wellness (mét slaap) en 119 activiteiten.
-          De sync loopt elk uur, en ververst zodra je de app opent. Hevy via de AQ-log;
+          De sync loopt elk uur, en ververst zodra je de app opent. Kracht log je in de app;
           de weegschaal is een toekomstige fase.
         </p>
       </div>
@@ -390,7 +390,7 @@
         <span class="eyebrow" style="color:var(--form)">Fase 2 · klaar</span>
         <h4>De rekenmachine</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Alle berekeningen als code, met tests (193 groen). <strong>Hier zit de waarde</strong> —
+          Alle berekeningen als code, met tests (264 groen). <strong>Hier zit de waarde</strong> —
           vanaf hier heb je een werkend dashboard zonder dat er één token aan te pas komt.
         </p>
       </div>
@@ -398,7 +398,7 @@
         <span class="eyebrow" style="color:var(--form)">Fase 3 · klaar</span>
         <h4>De PWA</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Acht schermen: Vandaag, Herstel, Week, Trends, Coach, Kracht, Invoer en Feedback.
+          Negen schermen: Vandaag, Herstel, Week, Trends, Coach, Kracht, Invoer, Feedback en Profiel.
           Installeerbaar op je beginscherm, en offline met de laatste snapshot. Alles achter
           de login.
         </p>
@@ -407,9 +407,10 @@
         <span class="eyebrow" style="color:var(--form)">Fase 4 · klaar</span>
         <h4>Invoer</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Je kunt nu iets teruggeven: beschikbaarheid per dag en per sport, en <strong>Feedback</strong>
-          op een afgeronde training — RPE, een score 0–100%, gepland/iets anders/overgeslagen,
-          een notitie en plan-vs-gedaan. Plus ziek melden.
+          Je kunt nu iets teruggeven: <strong>beschikbaarheid</strong> als week-overzicht (7 dagkaarten,
+          drie dagdelen per dag, "kopieer vorige week"), en <strong>Feedback</strong> op een afgeronde
+          training — je landt op die training en ziet de cijfers, plan-vs-gedaan, RPE 1–10, een
+          score 0–100%, gepland/iets anders/overgeslagen en een notitie. Plus ziek melden.
         </p>
       </div>
       <div class="card">
@@ -437,9 +438,10 @@
         <span class="eyebrow" style="color:var(--easy)">Fase 6 · deels</span>
         <h4>Kracht</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          De machinerie staat: een bibliotheek van 30 oefeningen met demo's en de
-          <span class="mono">build-strength-block</span>-skill (12 weken). Het echte blok
-          wacht op je doel, je materiaal en je beschikbaarheid.
+          De machinerie staat: een bibliotheek van 30 oefeningen met demo's, de
+          <span class="mono">build-strength-block</span>-skill (12 weken) en <strong>kracht loggen in
+          de app</strong> — oefeningen kiezen, sets toevoegen (reps + kg); de load telt mee in je week.
+          Het echte blok wacht op je doel, je materiaal en je beschikbaarheid.
         </p>
       </div>
       <div class="card" style="border-color:var(--line-2)">
@@ -523,13 +525,16 @@
         <span class="eyebrow" style="color:var(--form)">Nu · in gebruik</span>
         <h4>Wat je vandaag al hebt</h4>
         <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
-          <li>Acht schermen: Vandaag · Herstel · Week · Trends · Coach · Kracht · Invoer · Feedback</li>
+          <li><strong>Negen schermen</strong>: Vandaag · Herstel · Week · Trends · Coach · Kracht · Invoer · Feedback · Profiel</li>
           <li>Dashboard (PWA, offline, achter login)</li>
           <li>intervals.icu-data: slaap, rusthartslag, trainingen</li>
-          <li>Rekenregels: readiness, load, 80/20, patronen, Body Battery (193 tests)</li>
+          <li>Rekenregels: readiness, load, 80/20, patronen, Body Battery, krachtload (<strong>264 tests</strong>)</li>
           <li>Coach met een echt model + fallback — in de app én op Telegram, één gesprek</li>
           <li>Je doel doorgeven; de coach zet het vast en periodiseert (zichtbaar in Trends)</li>
-          <li>Feedback-lus: RPE, score, plan-vs-gedaan › valkuilen in Trends</li>
+          <li>Feedback-lus: je landt op je training, met RPE, score en plan-vs-gedaan › valkuilen in Trends</li>
+          <li>Body Battery loopt ook over de dag leeg: "nog X% nu"</li>
+          <li>Beschikbaarheid als week-overzicht: 7 dagkaarten, drie dagdelen per dag, "kopieer vorige week"</li>
+          <li>Kracht loggen in de app: oefeningen kiezen, sets (reps + kg), load en "recent gelogd"</li>
           <li>Ochtendbrief om 07:00, met de herstelkaart als PNG-foto</li>
           <li>Workout aanleveren (.fit/screenshot) › kalender › horloge</li>
           <li>Commando <span class="mono">push</span></li>
@@ -580,9 +585,11 @@
         <span class="eyebrow" style="color:var(--fitness)">De app</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           Zet de PWA op je beginscherm en open hem wanneer je wilt. Vandaag toont het oordeel met
-          de reden, je sessie en de <b>Body Battery</b>; Herstel de ring en de bijdragers; Trends de
+          de reden, je sessie en de <b>Body Battery</b> — inclusief <b>"nog X% nu"</b>, de
+          intraday-schatting; Herstel de ring, de bijdragers en die gauge; Trends de
           seizoensgrafiek, je doel en je valkuilen; en de <b>Coach-tab</b> is hetzelfde gesprek als op
-          Telegram. Ook offline.
+          Telegram. <b>Kracht</b> en <b>Invoer</b> loggen wat je doet, en <b>Profiel</b> bundelt je
+          doelen en je beschikbaarheid. Negen schermen, ook offline.
         </p>
       </div>
       <div class="card">
@@ -614,15 +621,20 @@
         <span class="eyebrow" style="color:var(--fitness)">Na de training</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           Log wat je deed: <span class="mono">log fiets 60 7</span> in Telegram (sport · minuten ·
-          RPE), of geef <b>Feedback</b> op het Feedback-scherm. De coach vraagt na een nieuwe
-          training ook zelf hoe het ging (knoppen: verdict › RPE). De belasting rekent het systeem uit.
+          RPE), of geef <b>Feedback</b> — je klikt op de afgeronde training, <b>landt op die
+          training</b> en vult RPE, score en plan-vs-gedaan in. <b>Kracht</b> log je op het
+          Kracht-scherm: oefeningen kiezen en sets toevoegen (reps + kg). De coach vraagt na een
+          nieuwe training ook zelf hoe het ging (knoppen: verdict › RPE). De belasting rekent het
+          systeem uit.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--fitness)">Je week instellen</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
-          In de app bij <b>Invoer</b>: kies per dag en per sport je beschikbaarheid. Dat is je
-          plan vooraf; wat je daarna doet, geef je terug via Feedback.
+          In de app bij <b>Invoer</b>: je ziet de week als overzicht met 7 dagkaarten en het
+          week-totaal. Tik een dag open om de drie dagdelen te bewerken (minuten + sport), of
+          gebruik "kopieer vorige week". Dat is je plan vooraf; wat je daarna doet, geef je terug
+          via Feedback.
         </p>
       </div>
     </div>
