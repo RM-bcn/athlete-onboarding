@@ -242,13 +242,14 @@
       <div><div class="step-n">4</div><div class="step-meta">klaar</div></div>
       <div>
         <span class="badge ok">gedaan</span>
-        <h2 style="margin-top:14px">Hevy</h2>
+        <h2 style="margin-top:14px">Hevy + de AQ-log</h2>
         <p style="color:var(--muted);margin-top:12px">
-          Je gebruikt Hevy al. Het gratis plan is genoeg — we hebben geen Pro nodig.
-          <strong>Correctie op het plan:</strong> Hevy's API zit achter Pro, en Health Connect
-          bereikt AQ niet (het is een databank op je telefoon, zonder server-API). De
-          <b>gewichten</b> die je tilt, typ je daarom over in de AQ-log — via de app of gewoon
-          in Telegram. De <b>hartslag</b> komt van je horloge via intervals.icu.
+          Je gebruikt Hevy al. <strong>De route nu:</strong> Hevy's gratis plan heeft
+          <em>geen</em> API — die zit achter Pro, en we hebben geen Pro nodig. Wat je tilt, log
+          je daarom over in de <b>AQ-log</b>: een handmatige sessie met <b>duur</b> en <b>RPE</b>,
+          via de app of gewoon in Telegram. De <b>hartslag</b> tijdens het krachtwerk komt van je
+          horloge via intervals.icu. Zo telt kracht mee in het load-model, zonder iets te
+          synchroniseren dat niet kan.
         </p>
 
         <ol class="acts">
@@ -260,7 +261,34 @@
 
         <div class="hand" style="border-left-color:var(--form);background:rgba(0,214,143,.06)">
           <span class="lbl" style="color:var(--form)">Klaar</span>
-          <p>Geen sleutel nodig. AQ leunt niet op Health Connect — de gegevens komen via intervals.icu.</p>
+          <p>Geen sleutel nodig. AQ leunt niet op Health Connect — de gegevens komen via intervals.icu en de AQ-log.</p>
+        </div>
+
+        <div class="card raised" style="margin-top:22px">
+          <span class="eyebrow" style="color:var(--easy)">Optie voor later</span>
+          <h4>Een open-source krachttracker met een echte API</h4>
+          <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
+            Hevy's gratis plan heeft geen API, dus de set-details (gewicht x reps) komen nu niet
+            automatisch binnen. Wil je dat later wel, dan is een self-hostbare tracker met een
+            echte API het overwegen waard. <em>Eerlijk: dit is een optie, niets hiervan is al
+            gebouwd.</em>
+          </p>
+          <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.9rem;line-height:1.75">
+            <li><b>wger</b> — self-hosted via Docker (AGPL), met een gedocumenteerde REST API
+            (<span class="mono">/api/v2/</span>). Het slaat <b>sets, reps, gewicht, RiR en rust</b>
+            per sessie op, plus lichaamsgewicht en metingen. In AQ zou de Worker periodiek
+            <span class="mono">/api/v2/workoutlog/</span> ophalen en daar de krachtload uit
+            afleiden — dan hoef jij niets meer over te typen.</li>
+            <li><b>openGym</b> — self-hosted via Docker (AGPL), logt sets, reps en gewicht, en kan
+            je bestaande <b>Hevy-historie importeren</b>. Het heeft een eigen API voor de
+            eigen app, maar die is niet als publieke API gedocumenteerd; dat zou eerst
+            uitzoekwerk zijn.</li>
+          </ul>
+          <div class="trap" style="margin-top:16px">
+            <b>Aanbeveling:</b> blijf voor nu bij <b>Hevy + de AQ-log</b> — gratis en precies
+            genoeg voor de load. Houd <b>wger</b> achter de hand als je de set-details
+            automatisch wilt.
+          </div>
         </div>
       </div>
     </div>
@@ -416,6 +444,7 @@
           Gewicht komt al mee via intervals.icu. Voor de volledige
           lichaamscompositie — vetpercentage, spiermassa, water, visceraal vet — koppelen we
           later de weegschaal rechtstreeks via <b>Tuya</b>. Niet nodig om te starten.
+          <a href="#weegschaal">De stappen staan verderop ›</a>
         </p>
       </div>
     </div>
@@ -435,6 +464,43 @@
       <span class="mono">PLAN.md</span> in de voorstel-repo. En de onderbouwing — wetenschap,
       architectuur, interface — staat in de bijlagen.
     </p>
+  </div>
+</section>
+
+<!-- ============ WEEGSCHAAL ============ -->
+<section class="band" id="weegschaal">
+  <div class="wrap">
+    <p class="eyebrow accent">Toekomstige fase</p>
+    <h2>De weegschaal via Tuya.</h2>
+    <p style="max-width:64ch;color:var(--muted);margin-top:18px">
+      Gewicht komt al mee via intervals.icu. Voor de volledige lichaamscompositie —
+      <b>gewicht, vetpercentage, spiermassa, water en visceraal vet</b> — koppelen we later de
+      weegschaal rechtstreeks via <b>Tuya</b>. Dit is een <b>toekomstige fase</b>: niets om nu
+      te starten, en gewicht kan eventueel ook via Huawei binnenkomen als dat pad eenvoudiger
+      blijkt. <b>Health Connect is geen route</b>: dat draait op je telefoon en heeft geen
+      server-API, dus AQ kan er niet bij.
+    </p>
+
+    <div class="card raised" style="margin-top:34px">
+      <h4 style="margin-bottom:6px">Zo koppel je de weegschaal later</h4>
+      <p style="color:var(--muted);font-size:.9rem;margin:0">
+        Dit zijn de echte stappen, voor wanneer we deze fase starten. Ze vragen een account en
+        een QR-scan, dus dit is jouw hand.
+      </p>
+      <ol class="acts">
+        <li>Maak een gratis account op <a href="https://iot.tuya.com">iot.tuya.com</a>.</li>
+        <li>Maak een <b>Cloud-project</b> aan. Je krijgt een <b>Access ID</b> en een <b>Access Secret</b>.</li>
+        <li>In het project: <b>Devices</b> › <b>Link Tuya App Account</b> › <b>Add App Account</b>; er verschijnt een QR-code.</li>
+        <li>Scan die QR met de <b>Smart Life-app</b> — <em>niet</em> LSC Smart Connect. Dat is een Tuya-kloon en dan krijg je <span class="mono">0 devices under the app account</span>.</li>
+        <li><b>Service API</b> › zoek <b>Body Fat Scale</b> › <b>Authorize</b>.</li>
+        <li>Noteer het <b>Device ID</b> van je weegschaal.</li>
+        <li>Die drie — Access ID, Access Secret en Device ID — gaan als secrets in de Worker. Daarna schrijft AQ het gewicht en de lichaamscompositie naar intervals.icu.</li>
+      </ol>
+      <div class="trap">
+        <b>Onthoud:</b> dit is een toekomstige fase, geen voorwaarde om te starten.
+        Gewicht kan eventueel ook via Huawei binnenkomen.
+      </div>
+    </div>
   </div>
 </section>
 
@@ -568,6 +634,7 @@
   <a href="#s5" aria-label="5 GitHub"></a>
   <a href="#s6" aria-label="6 Model-API"></a>
   <a href="#daarna" aria-label="Daarna"></a>
+  <a href="#weegschaal" aria-label="Weegschaal"></a>
   <a href="#roadmap" aria-label="Roadmap"></a>
   <a href="#dagelijks" aria-label="Dagelijks"></a>
 </nav>
