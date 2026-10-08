@@ -438,6 +438,120 @@
   </div>
 </section>
 
+<!-- ============ ROADMAP ============ -->
+<section class="band" id="roadmap">
+  <div class="wrap">
+    <p class="eyebrow accent">Roadmap</p>
+    <h2>Wat er staat, en wat komt.</h2>
+    <p style="max-width:64ch;color:var(--muted);margin-top:18px">
+      De basis staat en is in gebruik. Dit is de eerlijke stand — geen beloftes, geen datums.
+    </p>
+
+    <div class="grid g3" style="margin-top:38px;gap:24px;align-items:start">
+      <div class="card">
+        <span class="eyebrow" style="color:var(--form)">Nu · in gebruik</span>
+        <h4>Wat je vandaag al hebt</h4>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
+          <li>Dashboard (PWA, offline, achter login)</li>
+          <li>intervals.icu-data: slaap, rusthartslag, trainingen</li>
+          <li>Rekenregels: readiness, load, 80/20 (78 tests)</li>
+          <li>Invoer: beschikbaarheid, loggen, ziek melden</li>
+          <li>Coach op Telegram met een echt model + fallback</li>
+          <li>Ochtendbrief om 07:00</li>
+          <li>Workout aanleveren (.fit/screenshot) › kalender › horloge</li>
+          <li>Commando <span class="mono">push</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--easy)">Volgende</span>
+        <h4>Wat ik hierna bouw</h4>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
+          <li>De coach past je week echt aan (verplaatsen, verzachten), niet alleen adviseren</li>
+          <li>Alles ook in de app, niet alleen Telegram</li>
+          <li>Een meerdaags plan in één keer aanleveren</li>
+          <li>Weekreview met het model</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--dim)">Later · toekomstige fase</span>
+        <h4>Wat nog wacht</h4>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
+          <li>De weegschaal (Tuya) voor lichaamscompositie</li>
+          <li>Cloudflare Access als nettere poort</li>
+          <li>Het echte krachtblok zodra je doel en materiaal geeft</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAGELIJKS ============ -->
+<section class="band" id="dagelijks">
+  <div class="wrap">
+    <p class="eyebrow accent">Dagelijks gebruik</p>
+    <h2>Zo werk je ermee.</h2>
+    <p style="max-width:64ch;color:var(--muted);margin-top:18px">
+      Je hoeft niets te onderhouden. Je leest, je stuurt, en af en toe log je iets. De rest doet het systeem.
+    </p>
+
+    <div class="grid g2" style="margin-top:38px;gap:22px;align-items:start">
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Ochtend</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          Om <b>07:00</b> krijg je automatisch een bericht op Telegram: readiness, slaap, je vorm,
+          en wat er gepland staat. Eén bericht per dag — geen ruis.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">De app</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          Zet de PWA op je beginscherm en open hem wanneer je wilt. Je ziet de readiness-ring,
+          wat er vandaag gepland is, de week, de 80/20 en je recente sessies. Ook offline.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Telegram</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          <span class="mono">status</span> · <span class="mono">week</span> ·
+          <span class="mono">push</span> · <span class="mono">log loop 45 6</span> ·
+          <span class="mono">ik ben ziek</span> · <span class="mono">help</span>. De coach antwoordt
+          met je eigen cijfers.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Workout aanleveren</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          Stuur een <b>.fit</b> of een <b>screenshot</b> van je JOIN-training. De coach leest hem,
+          vertaalt naar doel en effect, zet hem op je kalender en naar je horloge.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Na de training</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          Log wat je deed: <span class="mono">log fiets 60 7</span> in Telegram (sport · minuten ·
+          RPE), of via het log-scherm in de app. De belasting rekent het systeem uit.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Je week instellen</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          In de app bij <b>invoer</b>: schuif per dagdeel de minuten en kies de sport. Dat is je
+          plan vooraf; wat je daarna doet, log je.
+        </p>
+      </div>
+    </div>
+
+    <div class="card raised" style="margin-top:26px">
+      <h4 style="margin-bottom:10px">De kern in één zin</h4>
+      <p style="color:var(--muted);font-size:.95rem">
+        De cijfers komen uit <b>regels</b>, het oordeel uit een <b>model</b>.
+        Je leest de ochtendbrief, stuurt een workout als je die krijgt, en logt wat je deed.
+        Alles wat kan rekenen, rekent het systeem — nooit een verzonnen getal.
+      </p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>Athlete Intelligence · onboarding</span>
@@ -454,6 +568,8 @@
   <a href="#s5" aria-label="5 GitHub"></a>
   <a href="#s6" aria-label="6 Model-API"></a>
   <a href="#daarna" aria-label="Daarna"></a>
+  <a href="#roadmap" aria-label="Roadmap"></a>
+  <a href="#dagelijks" aria-label="Dagelijks"></a>
 </nav>
 
 <script>
