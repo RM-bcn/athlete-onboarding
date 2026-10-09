@@ -121,7 +121,7 @@
 
     <div class="grid g3 reveal" style="margin-top:44px">
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">6</div><div class="eyebrow" style="margin:8px 0 0">al klaar</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">Cloudflare · intervals.icu · Telegram · Hevy · vault · model</p></div>
-      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">0</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">niets meer van de zes stappen — los daarvan wachten het hypnogram, Cloudflare Access en de weegschaal (Tuya) op de gebruiker</p></div>
+      <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--form)">0</div><div class="eyebrow" style="margin:8px 0 0">nog open</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">niets meer van de zes stappen — los daarvan wachten het hypnogram en Cloudflare Access; de weegschaal koppel je nu via Bluetooth in de PWA</p></div>
       <div class="card"><div style="font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:2rem;color:var(--fitness)">live</div><div class="eyebrow" style="margin:8px 0 0">het dashboard</div><p style="color:var(--muted);font-size:.9rem;margin-top:6px">de Worker draait, de data stroomt, de coach antwoordt — in de app én op Telegram — en het staat achter een login</p></div>
     </div>
 
@@ -390,7 +390,7 @@
         <span class="eyebrow" style="color:var(--form)">Fase 2 · klaar</span>
         <h4>De rekenmachine</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Alle berekeningen als code, met tests (264 groen). <strong>Hier zit de waarde</strong> —
+          Alle berekeningen als code, met tests (494 groen). <strong>Hier zit de waarde</strong> —
           vanaf hier heb je een werkend dashboard zonder dat er één token aan te pas komt.
         </p>
       </div>
@@ -398,9 +398,9 @@
         <span class="eyebrow" style="color:var(--form)">Fase 3 · klaar</span>
         <h4>De PWA</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Negen schermen: Vandaag, Herstel, Week, Trends, Coach, Kracht, Invoer, Feedback en Profiel.
-          Installeerbaar op je beginscherm, en offline met de laatste snapshot. Alles achter
-          de login.
+          Tien schermen: Vandaag, Herstel, Week, Trends, Coach, Kracht, Invoer, Feedback, Profiel
+          en Weegschaal. Installeerbaar op je beginscherm, en offline met de laatste snapshot.
+          Alles achter de login.
         </p>
       </div>
       <div class="card">
@@ -421,15 +421,18 @@
           <span class="mono">deepseek-v4-flash</span> (via OpenCode Go), met een automatische
           fallback-keten. De coach zit nu ook <strong>in de app</strong> en deelt één gesprek met
           Telegram. Valt een model weg, dan waarschuwt de coach en gaat hij door op het volgende
-          goedkope model.
+          goedkope model. Hij <strong>plant de week zelf</strong> (ma–wo, zonder bevestiging), en
+          als je in gesprek herplant, zie je eerst een <strong>diff</strong> met de knoppen
+          [Opslaan] en [Aanpassen] — niets verandert zonder jouw bevestiging.
         </p>
       </div>
       <div class="card">
         <span class="eyebrow" style="color:var(--form)">Fase 7 · klaar</span>
         <h4>Telegram</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          De webhook staat live, de coach appt terug, en elke ochtend om 07:00 komt de
-          herstelbrief vanzelf — met de <strong>herstelkaart als PNG-foto</strong>. Na een nieuwe
+          De webhook staat live, de coach appt terug, en elke ochtend komt de
+          herstelbrief vanzelf — maar pas als de <strong>slaap van vannacht</strong> binnen is
+          (geen kaart met "SLAAP —"), met de <strong>herstelkaart als PNG-foto</strong>. Na een nieuwe
           training vraagt de coach hoe het ging (knoppen: verdict › RPE). Twee richtingen: jij
           stuurt, hij antwoordt.
         </p>
@@ -444,14 +447,14 @@
           Het echte blok wacht op je doel, je materiaal en je beschikbaarheid.
         </p>
       </div>
-      <div class="card" style="border-color:var(--line-2)">
-        <span class="eyebrow" style="color:var(--dim)">Later · toekomstige fase</span>
-        <h4>De weegschaal (lichaamscompositie)</h4>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--form)">Klaar</span>
+        <h4>De weegschaal, via Bluetooth</h4>
         <p style="color:var(--muted);font-size:.9rem;margin-top:8px">
-          Gewicht komt al mee via intervals.icu. Voor de volledige
-          lichaamscompositie — vetpercentage, spiermassa, water, visceraal vet — koppelen we
-          later de weegschaal rechtstreeks via <b>Tuya</b>. Niet nodig om te starten.
-          <a href="#weegschaal">De stappen staan verderop ›</a>
+          De PWA leest een <b>BLE-weegschaal</b> rechtstreeks uit via Web Bluetooth (Chrome op
+          Android) en zet gewicht en BMI in je data. Gewicht komt ook mee via intervals.icu;
+          de volledige lichaamscompositie vul je aan op de weegschaal zelf.
+          <a href="#weegschaal">Zo werkt het ›</a>
         </p>
       </div>
     </div>
@@ -474,38 +477,33 @@
   </div>
 </section>
 
-<!-- ============ WEEGSCHAAL ============ -->
+<!-- ============ WEEGSCHAAF ============ -->
 <section class="band" id="weegschaal">
   <div class="wrap">
-    <p class="eyebrow accent">Toekomstige fase</p>
-    <h2>De weegschaal via Tuya.</h2>
+    <p class="eyebrow accent">Klaar</p>
+    <h2>De weegschaal, via Bluetooth.</h2>
     <p style="max-width:64ch;color:var(--muted);margin-top:18px">
-      Gewicht komt al mee via intervals.icu. Voor de volledige lichaamscompositie —
-      <b>gewicht, vetpercentage, spiermassa, water en visceraal vet</b> — koppelen we later de
-      weegschaal rechtstreeks via <b>Tuya</b>. Dit is een <b>toekomstige fase</b>: niets om nu
-      te starten, en gewicht kan eventueel ook via Huawei binnenkomen als dat pad eenvoudiger
-      blijkt. <b>Health Connect is geen route</b>: dat draait op je telefoon en heeft geen
-      server-API, dus AQ kan er niet bij.
+      De PWA leest een <b>BLE-weegschaal</b> rechtstreeks uit via <b>Web Bluetooth</b> — geen
+      cloud-account, geen omweg. We gebruiken de standaard Bluetooth-weegservice, dus als jouw
+      weegschaal die ondersteunt, werkt het meteen. Het gewicht (en de BMI, als de weegschaal die
+      stuurt) gaat naar je data. Gewicht komt daarnaast ook mee via intervals.icu.
     </p>
 
     <div class="card raised" style="margin-top:34px">
-      <h4 style="margin-bottom:6px">Zo koppel je de weegschaal later</h4>
+      <h4 style="margin-bottom:6px">Zo lees je de weegschaal uit</h4>
       <p style="color:var(--muted);font-size:.9rem;margin:0">
-        Dit zijn de echte stappen, voor wanneer we deze fase starten. Ze vragen een account en
-        een QR-scan, dus dit is jouw hand.
+        Dit is jouw hand, en het is één minuut werk. Het werkt in <b>Chrome op Android</b>;
+        iPhone/Safari ondersteunt Web Bluetooth niet.
       </p>
       <ol class="acts">
-        <li>Maak een gratis account op <a href="https://iot.tuya.com">iot.tuya.com</a>.</li>
-        <li>Maak een <b>Cloud-project</b> aan. Je krijgt een <b>Access ID</b> en een <b>Access Secret</b>.</li>
-        <li>In het project: <b>Devices</b> › <b>Link Tuya App Account</b> › <b>Add App Account</b>; er verschijnt een QR-code.</li>
-        <li>Scan die QR met de <b>Smart Life-app</b> — <em>niet</em> LSC Smart Connect. Dat is een Tuya-kloon en dan krijg je <span class="mono">0 devices under the app account</span>.</li>
-        <li><b>Service API</b> › zoek <b>Body Fat Scale</b> › <b>Authorize</b>.</li>
-        <li>Noteer het <b>Device ID</b> van je weegschaal.</li>
-        <li>Die drie — Access ID, Access Secret en Device ID — gaan als secrets in de Worker. Daarna schrijft AQ het gewicht en de lichaamscompositie naar intervals.icu.</li>
+        <li>Open <b>Weegschaal</b> in de PWA (in de navigatie onder "meer weergaven").</li>
+        <li>Tik op <b>Koppel weegschaal</b> en kies je weegschaal in de lijst. <em>Zoek alle apparaten</em> kan ook.</li>
+        <li>Stap op de weegschaal en houd je telefoon erbij. Het gewicht gaat meteen naar je data.</li>
+        <li>Lukt koppelen wel maar zie je geen meting, dan gebruikt jouw weegschaal een eigen protocol — vul het gewicht dan handmatig in intervals.icu in.</li>
       </ol>
       <div class="trap">
-        <b>Onthoud:</b> dit is een toekomstige fase, geen voorwaarde om te starten.
-        Gewicht kan eventueel ook via Huawei binnenkomen.
+        <b>Onthoud:</b> de eerdere route via de <b>Tuya</b>-cloud is niet meer nodig. Web Bluetooth
+        is directer, en je hoeft geen account of QR-scan te doen.
       </div>
     </div>
   </div>
@@ -525,17 +523,22 @@
         <span class="eyebrow" style="color:var(--form)">Nu · in gebruik</span>
         <h4>Wat je vandaag al hebt</h4>
         <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
-          <li><strong>Negen schermen</strong>: Vandaag · Herstel · Week · Trends · Coach · Kracht · Invoer · Feedback · Profiel</li>
+          <li><strong>Tien schermen</strong>: Vandaag · Herstel · Week · Trends · Coach · Kracht · Invoer · Feedback · Profiel · Weegschaal</li>
           <li>Dashboard (PWA, offline, achter login)</li>
           <li>intervals.icu-data: slaap, rusthartslag, trainingen</li>
-          <li>Rekenregels: readiness, load, 80/20, patronen, Body Battery, krachtload (<strong>264 tests</strong>)</li>
+          <li>Rekenregels: readiness, load, 80/20, patronen, Body Battery, krachtload (<strong>494 tests</strong>)</li>
           <li>Coach met een echt model + fallback — in de app én op Telegram, één gesprek</li>
+          <li>De coach <strong>plant de week zelf</strong> (ma–wo) en <strong>herplant in gesprek</strong>: een diff met [Opslaan] en [Aanpassen]</li>
+          <li>Seizoensoverzicht in Trends: de fases, de examens en het streefvolume in u/week</li>
+          <li>Test-bibliotheek: FTP 20/12, ramp, drempel 30/20, 5 km tijdrit, Cooper — een examendatum krijgt automatisch een sessie met warming-up, gepland én naar het horloge</li>
           <li>Je doel doorgeven; de coach zet het vast en periodiseert (zichtbaar in Trends)</li>
+          <li>Vermogensprofiel + fenotype: waar je kracht ligt</li>
           <li>Feedback-lus: je landt op je training, met RPE, score en plan-vs-gedaan › valkuilen in Trends</li>
-          <li>Body Battery loopt ook over de dag leeg: "nog X% nu"</li>
+          <li>Body Battery is <strong>continu</strong> (geen reset om middernacht) met hoverbare curves op Herstel</li>
           <li>Beschikbaarheid als week-overzicht: 7 dagkaarten, drie dagdelen per dag, "kopieer vorige week"</li>
           <li>Kracht loggen in de app: oefeningen kiezen, sets (reps + kg), load en "recent gelogd"</li>
-          <li>Ochtendbrief om 07:00, met de herstelkaart als PNG-foto</li>
+          <li>Weegschaal via <strong>Web Bluetooth</strong> in de PWA</li>
+          <li>Ochtendbrief, pas als de slaap van vannacht binnen is, met de herstelkaart als PNG-foto</li>
           <li>Workout aanleveren (.fit/screenshot) › kalender › horloge</li>
           <li>Commando <span class="mono">push</span></li>
         </ul>
@@ -544,7 +547,6 @@
         <span class="eyebrow" style="color:var(--easy)">Volgende</span>
         <h4>Wat ik hierna bouw</h4>
         <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
-          <li>De coach past je week echt aan (verplaatsen, verzachten), niet alleen adviseren</li>
           <li>Een meerdaags plan in één keer aanleveren</li>
           <li>Weekreview met het model</li>
           <li>Het hypnogram (slaapfases) — Huawei levert die nog niet</li>
@@ -554,7 +556,6 @@
         <span class="eyebrow" style="color:var(--dim)">Later · toekomstige fase</span>
         <h4>Wat nog wacht</h4>
         <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem;line-height:1.9">
-          <li>De weegschaal (Tuya) voor lichaamscompositie</li>
           <li>Cloudflare Access als nettere poort</li>
           <li>Het echte krachtblok zodra je doel en materiaal geeft</li>
         </ul>
@@ -576,8 +577,9 @@
       <div class="card">
         <span class="eyebrow" style="color:var(--fitness)">Ochtend</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
-          Om <b>07:00</b> krijg je automatisch een bericht op Telegram: readiness, slaap, je vorm,
-          en wat er gepland staat — met de <b>herstelkaart als PNG-foto</b>. Eén bericht per dag,
+          Elke ochtend krijg je automatisch een bericht op Telegram: readiness, slaap, je vorm,
+          en wat er gepland staat — met de <b>herstelkaart als PNG-foto</b>. Hij wacht tot de
+          <b>slaap van vannacht</b> binnen is, dus geen kaart met "SLAAP —". Eén bericht per dag,
           geen ruis.
         </p>
       </div>
@@ -586,10 +588,12 @@
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           Zet de PWA op je beginscherm en open hem wanneer je wilt. Vandaag toont het oordeel met
           de reden, je sessie en de <b>Body Battery</b> — inclusief <b>"nog X% nu"</b>, de
-          intraday-schatting; Herstel de ring, de bijdragers en die gauge; Trends de
-          seizoensgrafiek, je doel en je valkuilen; en de <b>Coach-tab</b> is hetzelfde gesprek als op
-          Telegram. <b>Kracht</b> en <b>Invoer</b> loggen wat je doet, en <b>Profiel</b> bundelt je
-          doelen en je beschikbaarheid. Negen schermen, ook offline.
+          intraday-schatting; Herstel de ring, de bijdragers en die gauge, plus <b>hoverbare
+          curves</b> (battery, slaap, herstel, rust-HR); Trends de seizoensgrafiek, het
+          <b>seizoensoverzicht</b>, je doel en je valkuilen; en de <b>Coach-tab</b> is hetzelfde
+          gesprek als op Telegram. <b>Kracht</b> en <b>Invoer</b> loggen wat je doet,
+          <b>Profiel</b> bundelt je doelen en je beschikbaarheid, en bij <b>Weegschaal</b> lees je
+          je BLE-weegschaal uit. Tien schermen, ook offline.
         </p>
       </div>
       <div class="card">
@@ -606,8 +610,10 @@
         <span class="eyebrow" style="color:var(--fitness)">Je doel doorgeven</span>
         <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
           Zeg tegen de coach wat je wilt: <span class="mono">mijn doel is de halve marathon op
-          5:07/km</span>. Hij zet het vast en bouwt de periodisering (Base › Build › Peak › Taper),
-          zichtbaar in <b>Trends</b>. Meerdere doelen kunnen naast elkaar staan.
+          5:07/km</span>. Hij zet het vast en bouwt de periodisering (Base › Build › Peak › Taper).
+          In <b>Trends</b> zie je dat terug als <b>seizoensoverzicht</b>: per fase de datums, het
+          aantal weken, de <b>examens</b> en het <b>streefvolume in u/week</b>. Meerdere doelen
+          kunnen naast elkaar staan.
         </p>
       </div>
       <div class="card">
@@ -634,7 +640,28 @@
           In de app bij <b>Invoer</b>: je ziet de week als overzicht met 7 dagkaarten en het
           week-totaal. Tik een dag open om de drie dagdelen te bewerken (minuten + sport), of
           gebruik "kopieer vorige week". Dat is je plan vooraf; wat je daarna doet, geef je terug
-          via Feedback.
+          via Feedback. Je hoeft niet elke maandag "plan mijn week" te zeggen: de coach <b>plant de
+          week zelf</b> (ma–wo), zodra je beschikbaarheid er staat.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Test je vooruitgang</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          De coach heeft een <b>test-bibliotheek</b>: FTP 20/12, de ramp-test, drempel 30/20,
+          de 5 km tijdrit en de Cooper-test. Een <b>examendatum</b> krijgt automatisch de juiste
+          sessie met warming-up en cooling-down — gepland én naar je horloge. Uit de uitslag volgt
+          je eFTP, je drempeltempo of je VO2max; uit het <b>vermogensprofiel</b> je
+          <b>fenotype</b> ("waar ligt je kracht"). Je ziet het bij <b>Trends › Tests &amp;
+          progressie</b>.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="color:var(--fitness)">Herplannen in gesprek</span>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:10px">
+          Vraag de coach om je week te herzien ("verplaats donderdag, ik ben moe"). Hij stelt een
+          herziene week voor en de app toont een <b>diff</b>: wat er bijkomt, afgaat, wijzigt of
+          verplaatst. Pas als jij op <b>[Opslaan]</b> tikt, verandert er iets; <b>[Aanpassen]</b>
+          laat het voorstel varen. Niets verandert zonder bevestiging.
         </p>
       </div>
     </div>
@@ -644,7 +671,9 @@
       <p style="color:var(--muted);font-size:.95rem">
         De cijfers komen uit <b>regels</b>, het oordeel uit een <b>model</b>.
         Je leest de ochtendbrief, stuurt een workout als je die krijgt, en logt wat je deed.
-        Alles wat kan rekenen, rekent het systeem — nooit een verzonnen getal.
+        Zelfs de automatische weekplanning en de diff bij het herplannen zijn regels; alleen het
+        voorstel en de uitleg zijn tokens. Alles wat kan rekenen, rekent het systeem — nooit een
+        verzonnen getal.
       </p>
     </div>
   </div>

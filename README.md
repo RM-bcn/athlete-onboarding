@@ -19,8 +19,8 @@ Per stap: **wat je doet**, **waarom het nodig is**, **hoe je weet dat het gelukt
 | 5 | GitHub + app | klaar | Fase 5 |
 | 6 | Model-API | klaar | Fase 5 |
 
-De weegschaal (lichaamscompositie) is geen losse stap meer maar een toekomstige fase, via
-de Tuya Cloud API.
+De weegschaal lees je nu rechtstreeks uit via **Web Bluetooth** in de PWA (Chrome op
+Android); de eerdere Tuya-route is daarmee vervallen.
 
 ## Deployen
 
